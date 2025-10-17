@@ -1,0 +1,9 @@
+packages:
+  - apps/web
+  - apps/api
+  - packages/ui
+  - packages/utils
+  - packages/tsconfig
+  - packages/eslint-config
+  - infra/docker
+  - infra/terraform
