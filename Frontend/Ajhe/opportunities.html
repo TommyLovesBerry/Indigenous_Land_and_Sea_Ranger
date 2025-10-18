@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Opportunities - Ranger Portal</title>
+	<link rel="stylesheet" href="style.css"/>
+	<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+	<meta name="color-scheme" content="light">
+</head>
+<body>
+	<!-- Header -->
+	<header>
+		<div class="header-container">
+			<div class="logo-text">
+				<h1>Queensland</h1>
+				<h2>Government</h2>
+			</div>
+			<nav>
+				<ul>
+					<li><a href="index.html">Menu</a></li>
+					<li><a href="opportunities.html" class="active">Opportunities</a></li>
+					<li><a href="#">MyApplies</a></li>
+					<li><a href="map.html">Map</a></li>
+					<li><a href="contact.html">Contact</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- Main -->
+	<main class="opps-main">
+		<section class="opps-header">
+			<h2>Opportunities List</h2>
+
+			<!-- Filters -->
+			<div class="filters">
+				<input id="fSearch" type="text" placeholder="Search opportunities..." aria-label="Search opportunities">
+				<select id="fType" aria-label="Type">
+					<option value="">All Types</option>
+					<option>Intern</option>
+					<option>Full Time</option>
+					<option>Part Time</option>
+					<option>Casual</option>
+				</select>
+				<select id="fCategory" aria-label="Category">
+					<option value="">All Categories</option>
+					<option>Ranger</option>
+					<option>Admin</option>
+				</select>
+				<select id="fRegion" aria-label="Region">
+					<option value="">All Regions</option>
+					<option>South East Queensland</option>
+					<option>Far North Queensland</option>
+					<option>North Queensland</option>
+					<option>Central Queensland</option>
+					<option>Darling Downs and South West</option>
+					<option>Mackay, Isaac and Whitsunday</option>
+					<option>Wide Bay Burnett</option>
+				</select>
+				<button id="fApply" class="contact-btn">Filter</button>
+			</div>
+		</section>
+
+		<!-- Cards -->
+		<section id="cards" class="opps-grid" aria-live="polite"></section>
+
+		<!-- Pagination -->
+		<nav id="pager" class="pagination" aria-label="Opportunities pagination"></nav>
+	</main>
+
+	<footer>
+		<p>© 2025 Ranger Portal Project. Queensland Government Collaboration.</p>
+	</footer>
+
+	<!-- JavaScript -->
+	<script>
+		// Configuration
+		const ITEMS_PER_PAGE = 6;
+		const TOTAL_PLACEHOLDERS = 36;
+
+		const REGIONS = [
+			"South East Queensland",
+			"Far North Queensland",
+			"North Queensland",
+			"Central Queensland",
+			"Darling Downs and South West",
+			"Mackay, Isaac and Whitsunday",
+			"Wide Bay Burnett"
+		];
+		const TYPES = ["Intern","Full Time","Part Time","Casual"];
+		const CATEGORIES = ["Ranger","Admin"];
+
+		// Generate sample data (all cards link to the details page)
+		function makePlaceholder(i){
+			const type = TYPES[i % TYPES.length];
+			const category = CATEGORIES[i % CATEGORIES.length];
+			const region = REGIONS[i % REGIONS.length];
+			return {
+				id: i + 1,
+				title: "Opportunity Title",
+				org: "Organization Name",
+				meta: `Posted X days ago • ${region} • ${type}`,
+				desc: "Short description of the opportunity.",
+				href: "opportunity-details.html",
+				type, category, region
+			};
+		}
+		const ALL_ITEMS = Array.from({length: TOTAL_PLACEHOLDERS}, (_,i)=>makePlaceholder(i));
+
+		// DOM helpers
+		const $ = (id)=>document.getElementById(id);
+		const elCards = $('cards');
+		const elPager = $('pager');
+
+		function cardHtml(item){
+			return `
+				<article class="opp-card">
+					<a href="${item.href}" class="opp-link">
+						<div class="opp-card-top">
+							<div class="org-logo placeholder"></div>
+							<h3>${item.title}</h3>
+						</div>
+						<p class="opp-meta">${item.meta}</p>
+						<p class="opp-desc">${item.desc}</p>
+						<p class="opp-org">${item.org}</p>
+					</a>
+				</article>
+			`;
+		}
+
+		// Filtering
+		function applyFilters(list){
+			const q = $('fSearch').value.trim().toLowerCase();
+			const t = $('fType').value;
+			const c = $('fCategory').value;
+			const r = $('fRegion').value;
+			return list.filter(x=>{
+				const hay = (x.title + " " + x.org).toLowerCase();
+				const matchQ = !q || hay.includes(q);
+				const matchT = !t || x.type === t;
+				const matchC = !c || x.category === c;
+				const matchR = !r || x.region === r;
+				return matchQ && matchT && matchC && matchR;
+			});
+		}
+
+		// Pagination
+		let currentPage = 1;
+		let filtered = [...ALL_ITEMS];
+
+		function render(){
+			const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+			if (currentPage > totalPages) currentPage = totalPages;
+
+			const start = (currentPage - 1) * ITEMS_PER_PAGE;
+			const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+			elCards.innerHTML = pageItems.map(cardHtml).join('') || '<p class="muted">No opportunities match your filter.</p>';
+
+			// Pager
+			let html = '';
+			const btn = (label, page, disabled=false, active=false) =>
+				`<button class="page-btn${active?' active':''}" ${disabled?'disabled':''} data-page="${page}">${label}</button>`;
+			html += btn('« Prev', Math.max(1,currentPage-1), currentPage===1);
+			const pagesToShow = 7;
+			const half = Math.floor(pagesToShow/2);
+			let startPage = Math.max(1, currentPage - half);
+			let endPage = Math.min(totalPages, startPage + pagesToShow - 1);
+			if (endPage - startPage + 1 < pagesToShow) startPage = Math.max(1, endPage - pagesToShow + 1);
+			for(let p=startPage; p<=endPage; p++){
+				html += btn(p, p, false, p===currentPage);
+			}
+			html += btn('Next »', Math.min(totalPages,currentPage+1), currentPage===totalPages);
+			elPager.innerHTML = html;
+
+			// Attach events
+			elPager.querySelectorAll('.page-btn').forEach(b=>{
+				b.addEventListener('click', ()=>{
+					const page = Number(b.getAttribute('data-page'));
+					if (!isNaN(page)) { currentPage = page; render(); }
+				});
+			});
+		}
+
+		function refilter(){
+			filtered = applyFilters(ALL_ITEMS);
+			currentPage = 1;
+			render();
+		}
+
+		$('fApply').addEventListener('click', refilter);
+
+		// initial
+		refilter();
+	</script>
+</body>
+</html>

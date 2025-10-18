@@ -1,0 +1,228 @@
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Comic Neue', sans-serif;
+  background-color: #fff;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background-color: #3c1690;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.logo-text h1 {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.logo-text h2 {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover, nav a.active {
+  text-decoration: underline;
+}
+
+/* MAIN LAYOUT */
+main {
+  flex: 1;
+}
+
+/* HERO SECTION */
+.hero {
+  background-color: #e5e5ff;
+  text-align: center;
+  padding: 60px 0;
+}
+
+.hero h2 {
+  font-size: 50px;
+  color: #3c1690;
+  font-family: 'Comic Neue', cursive;
+}
+
+/* BUTTON SECTION */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 60px auto;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.buttons button {
+  background-color: #4b24c4;
+  color: white;
+  border: none;
+  padding: 40px 0;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  transition: 0.3s;
+  min-width: 280px;
+}
+
+.buttons button:hover {
+  background-color: #2f1a8f;
+}
+
+/* ANNOUNCEMENTS */
+.announcements {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto 80px auto;
+}
+
+.announcements h3 {
+  font-size: 30px;
+  color: #3c1690;
+  margin-bottom: 25px;
+}
+
+.announcement {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  background-color: #3c1690;
+  color: white;
+  padding: 20px 0;
+  font-size: 15px;
+  margin-top: auto; /* keeps footer at bottom */
+}
+
+/* CONTACT PAGE */
+.contact-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.contact-section {
+  width: 80%;
+  max-width: 700px;
+  background-color: #f8f8ff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 50px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: #3c1690;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #3c1690;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Comic Neue', sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3c1690;
+}
+
+.contact-btn {
+  background-color: #4b24c4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #2f1a8f;
+}
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Map - Ranger Portal</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light">
+</head>
+<body class="map-page"><!-- 👈 add this class -->
+
+  <!-- Header -->
+  <header>
+        <div class="header-container">
+            <div class="logo-text">
+                <h1>Queensland</h1>
+                <h2>Government</h2>
+            </div>
+    
+            <nav>
+                <ul>
+                    <li><a href="index.html">Menu</a></li>
+                    <li><a href="opportunities.html">Opportunities</a></li>
+                    <li><a href="#">MyApplies</a></li>
+                    <li><a href="map.html" class="active">Map</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+  <main class="map-main">
+    <!-- Filters (not sticky anymore) -->
+    <section class="map-filters">
+      <select id="fRegion" aria-label="Region">
+        <option>All Regions</option>
+        <option>South East Queensland</option>
+        <option>Far North Queensland</option>
+        <option>North Queensland</option>
+        <option>Central Queensland</option>
+        <option>Darling Downs and South West</option>
+        <option>Mackay, Isaac and Whitsunday</option>
+        <option>Wide Bay Burnett</option>
+      </select>
+
+      <select id="fCategory" aria-label="Category">
+        <option>All Categories</option>
+        <option>Ranger</option>
+        <option>Admin</option>
+      </select>
+
+      <select id="fType" aria-label="Type">
+        <option>All Types</option>
+        <option>Intern</option>
+        <option>Full Time</option>
+        <option>Part Time</option>
+        <option>Casual</option>
+      </select>
+
+      <input id="fSearch" type="text" placeholder="Search name or team…" aria-label="Search on map">
+
+      <div class="map-buttons">
+        <button class="btn-primary" id="btnApply" type="button">Apply</button>
+        <button class="btn-secondary" id="btnReset" type="button">Reset</button>
+      </div>
+    </section>
+
+    <!-- Map area -->
+    <section class="map-wrap">
+      <div class="map-canvas" id="mapCanvas" aria-label="Map placeholder">
+        <div class="map-placeholder">
+          <div class="grid"></div>
+          <div class="label">Map placeholder</div>
+        </div>
+
+        <!-- Mock pins -->
+        <button class="pin" style="--x:78%; --y:22%;" aria-label="Cairns"></button>
+        <button class="pin pin--admin" style="--x:70%; --y:36%;" aria-label="Townsville"></button>
+        <button class="pin" style="--x:84%; --y:70%;" aria-label="Brisbane"></button>
+        <button class="pin" style="--x:67%; --y:56%;" aria-label="Rockhampton"></button>
+        <button class="pin" style="--x:74%; --y:46%;" aria-label="Mackay"></button>
+        <button class="pin pin--admin" style="--x:80%; --y:58%;" aria-label="Hervey Bay"></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Ranger Portal Project. Queensland Government Collaboration.</p>
+  </footer>
+
+  <!-- Reset & Apply Scripts -->
+  <script>
+    document.getElementById('btnReset').addEventListener('click', () => {
+      document.getElementById('fRegion').selectedIndex = 0;
+      document.getElementById('fCategory').selectedIndex = 0;
+      document.getElementById('fType').selectedIndex = 0;
+      document.getElementById('fSearch').value = '';
+      document.getElementById('btnReset').blur();
+    });
+    document.getElementById('btnApply').addEventListener('click', () => {
+      alert('Filter applied (placeholder — backend not yet connected).');
+    });
+  </script>
+</body>
+</html>

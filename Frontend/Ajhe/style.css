@@ -1,0 +1,505 @@
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: light only;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Comic Neue', sans-serif;
+  background-color: #ffffff !important;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+header {
+  background-color: #3c1690;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.logo-text h1 {
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.logo-text h2 {
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 35px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover, nav a.active {
+  text-decoration: underline;
+}
+
+/* MAIN LAYOUT */
+main {
+  flex: 1;
+}
+
+/* HERO SECTION */
+.hero {
+  background-color: #e5e5ff;
+  text-align: center;
+  padding: 60px 0;
+}
+
+.hero h2 {
+  font-size: 50px;
+  color: #3c1690;
+  font-family: 'Comic Neue', cursive;
+}
+
+/* BUTTON SECTION */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 60px auto;
+  width: 80%;
+  max-width: 1000px;
+}
+
+.buttons button {
+  background-color: #4b24c4;
+  color: white;
+  border: none;
+  padding: 40px 0;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  flex: 1;
+  transition: 0.3s;
+  min-width: 280px;
+}
+
+.buttons button:hover {
+  background-color: #2f1a8f;
+}
+
+/* ANNOUNCEMENTS */
+.announcements {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto 80px auto;
+}
+
+.announcements h3 {
+  font-size: 30px;
+  color: #3c1690;
+  margin-bottom: 25px;
+}
+
+.announcement {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile {
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  background-color: #3c1690;
+  color: white;
+  padding: 20px 0;
+  font-size: 15px;
+  margin-top: auto;
+}
+
+/* CONTACT PAGE */
+.contact-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.contact-section {
+  width: 80%;
+  max-width: 700px;
+  background-color: #f8f8ff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 50px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: #3c1690;
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.contact-section p {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #3c1690;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #3c1690;
+}
+
+.contact-btn {
+  background-color: #4b24c4;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-btn:hover {
+  background-color: #2f1a8f;
+}
+
+/* ---- Opportunities List ---- */
+.opps-main { width: 90%; max-width: 1200px; margin: 40px auto 80px; }
+.opps-header { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+.opps-header h2 { color: #3c1690; font-size: 36px; }
+
+.filters { display: grid; grid-template-columns: 1fr 170px 170px 170px 120px; gap: 12px; }
+.filters input, .filters select {
+  padding: 12px; border: 2px solid #ccc; border-radius: 6px;
+  font-family: 'Comic Neue', sans-serif; font-size: 16px;
+}
+
+.opps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+
+.opp-card {
+  border: 2px solid #5a3bd6;
+  border-radius: 8px;
+  background: #f7f7fb;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.opp-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+}
+
+.opp-link { display: block; padding: 16px; color: inherit; text-decoration: none; }
+.opp-card-top { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.opp-card h3 { font-size: 22px; color: #3c1690; }
+
+.org-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #5a3bd6; }
+.org-logo.placeholder { background: #ddd; border: 2px dashed #b8a9ff; }
+
+.opp-meta { font-size: 14px; color: #666; margin-bottom: 8px; }
+.opp-desc { font-size: 16px; margin-bottom: 8px; }
+.opp-org { font-weight: bold; color: #3c1690; }
+
+@media (max-width: 1000px){ .opps-grid{ grid-template-columns: repeat(2,1fr);} .filters{ grid-template-columns:1fr 1fr 1fr 1fr 120px;} }
+@media (max-width: 640px){ .opps-grid{ grid-template-columns:1fr;} .filters{ grid-template-columns:1fr;} }
+
+/* ---- Opportunity Detail ---- */
+.detail-main { width: 90%; max-width: 1200px; margin: 40px auto 80px; }
+.detail-header { display: flex; align-items: center; gap: 16px; margin-bottom: 8px; }
+.detail-header h2 { font-size: 42px; color: #6b6b6b; }
+.org-badge { width: 64px; height: 64px; border-radius: 50%; border: 2px solid #5a3bd6; object-fit: cover; }
+
+.detail-body { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.detail-left h4 { margin-top: 18px; color: #3c1690; }
+.keybox { border: 2px solid #5a3bd6; padding: 16px; border-radius: 8px; background: #f7f7fb; margin-bottom: 16px; }
+.keybox h4 { margin-bottom: 8px; color: #3c1690; }
+.keylist { list-style: disc; padding-left: 18px; }
+.keylist li { margin: 4px 0; }
+
+.detail-actions { display: flex; gap: 12px; margin-top: 22px; }
+.btn-primary, .btn-secondary { display: inline-block; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; }
+.btn-primary { background: #4b24c4; color: #fff; }
+.btn-primary:hover { background: #2f1a8f; }
+.btn-secondary { border: 2px solid #4b24c4; color: #4b24c4; background: #fff; }
+.btn-secondary:hover { background: #efeaff; }
+
+.muted { color: #777; }
+@media (max-width: 900px){ .detail-body { grid-template-columns: 1fr; } }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px 0 0;
+  flex-wrap: wrap;
+}
+.page-btn {
+  background: #fff;
+  border: 2px solid #4b24c4;
+  color: #4b24c4;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  min-width: 44px;
+}
+.page-btn:hover { background: #efeaff; }
+.page-btn.active {
+  background: #4b24c4;
+  color: #fff;
+  cursor: default;
+}
+.page-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+/* --- Opportunity Detail Page Enhancements --- */
+
+/* Keep header fixed and spacing consistent */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+body {
+  padding-top: 100px;
+}
+
+/* Organization line */
+.org-line {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 10px 0 25px;
+}
+
+.org-line .org-badge {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 3px solid #4b24c4;
+  object-fit: cover;
+}
+
+.org-name {
+  font-weight: 700;
+  color: #3c1690;
+  font-size: 26px;
+}
+
+/* Ensure Back button sits nicely */
+.detail-actions {
+  margin-top: 30px;
+}
+
+/* ==== MAP PAGE (clean, final front-end only) ==== */
+.map-main {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto 80px;
+}
+
+/* Sticky filter bar */
+.sticky {
+  position: sticky;
+  top: 100px;
+  z-index: 20;
+  background: #fff;
+  padding-top: 6px;
+}
+
+/* Filters layout */
+.map-filters {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 1fr auto;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.map-filters select,
+.map-filters input {
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Comic Neue', sans-serif;
+  font-size: 16px;
+}
+
+/* Map section layout */
+.map-wrap {
+  display: block;
+}
+.map-canvas {
+  position: relative;
+  border: 3px solid #5a3bd6;
+  border-radius: 10px;
+  background: #eef0ff;
+  min-height: 520px;
+  overflow: hidden;
+}
+
+/* Placeholder design */
+.map-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.map-placeholder .grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(0deg, rgba(255,255,255,.6) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.6) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map-placeholder .label {
+  z-index: 1;
+  background: rgba(255,255,255,.85);
+  border: 2px solid #b8a9ff;
+  color: #3c1690;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+/* Mock pins */
+.pin {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -100%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #35d45a;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+}
+.pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid #35d45a;
+}
+.pin.pin--admin {
+  background: #f6b041;
+}
+.pin.pin--admin::after {
+  border-top-color: #f6b041;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .map-filters { grid-template-columns: 1fr 1fr; }
+}
+
+/* ==== Map buttons (uniform small style) ==== */
+.map-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-family: 'Comic Neue', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Blue filled button */
+.btn-primary {
+  background: #4b24c4;
+  color: #fff;
+  border: 2px solid #4b24c4;
+}
+
+.btn-primary:hover {
+  background: #3a1c9c;
+}
+
+/* White outlined button */
+.btn-secondary {
+  background: #fff;
+  color: #4b24c4;
+  border: 2px solid #4b24c4;
+}
+
+.btn-secondary:hover {
+  background: #efeaff;
+}
+
